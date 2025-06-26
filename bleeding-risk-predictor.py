@@ -129,7 +129,8 @@ def main():
                 st.metric("Prediction Result", prediction)
             with col2:
                 st.metric("Risk Probability", f"{proba * 100:.1f}%")
-
+            # SHAP explanation
+            shap_values = explainer(input_df)
             # SHAP force plot
             st.subheader("Individual Prediction Explanation")
             force_plot = shap.force_plot(
