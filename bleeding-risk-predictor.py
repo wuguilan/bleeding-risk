@@ -140,7 +140,7 @@ def main():
                 feature_names=feature_names,
                 matplotlib=False
             )
-            st.components.v1.html(shap.getjs() + force_plot.html(), height=300)
+            st.components.v1.html(shap.getjs() + force_plot.html(), height=100)
 
             # ✅ Ensure risk explanation comes after SHAP plots in same try block
             st.subheader("Risk Interpretation")
