@@ -129,8 +129,15 @@ def main():
                 st.metric("Prediction Result", prediction)
             with col2:
                 st.metric("Risk Probability", f"{proba * 100:.1f}%")
-            # SHAP explanation
+             # SHAP解释
+            st.subheader("模型解释 - 特征重要性")
             shap_values = explainer(input_df)
+
+            # 创建SHAP摘要图
+            fig, ax = plt.subplots()
+            shap.summary_plot(shap_values.values, input_df, feature_names=feature_names, plot_type="bar",
+                              max_display=15)
+            st.pyplot(fig)
             # SHAP force plot
             st.subheader("Individual Prediction Explanation")
             force_plot = shap.force_plot(
